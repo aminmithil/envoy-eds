@@ -19,7 +19,7 @@ It is recommended to use `docker-compose` to run the example.
 ```bash
 git clone https://github.com/aminmithil/envoy-eds.git
 
-cd envoy-xds
+cd envoy-eds
 
 docker-compose up -d
 ```
