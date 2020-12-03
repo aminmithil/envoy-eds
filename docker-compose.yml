@@ -1,0 +1,39 @@
+version: "2.2"
+services:
+  xds:
+    build:
+      context: .
+      dockerfile: Dockerfile-xds-server
+    ports:
+      - "5678:5678"
+    networks:
+      backend:
+        ipv4_address: 10.5.1.7
+  hello-world:
+    image: "tutum/hello-world:latest"
+    ports:
+      - "8089:80"
+    networks:
+      backend:
+        ipv4_address: 10.5.1.6
+  envoy:
+    build:
+      context: .
+      dockerfile: Dockerfile-envoy
+    ports:
+      - "10000:10000"
+      - "9901:9901"
+    depends_on:
+      - xds
+      - hello-world
+    networks:
+      backend:
+        ipv4_address: 10.5.1.8
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.5.0.0/16
