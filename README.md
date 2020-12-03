@@ -17,7 +17,7 @@ Envoy provides a way to dynamically configure proxy. In which xDS server can be 
 It is recommended to use `docker-compose` to run the example.
 
 ```bash
-git clone https://github.com/aminmithil/envoy-xds.git
+git clone https://github.com/aminmithil/envoy-eds.git
 
 cd envoy-xds
 
